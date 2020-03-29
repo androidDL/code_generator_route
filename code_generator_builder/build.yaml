@@ -1,0 +1,15 @@
+builders:
+  tool_builder:
+    import: 'package:code_generator_builder/code_generator_builder.dart'
+    builder_factories: ['toolBuilder']
+    build_extensions: {'.dart':['temp.g.dart']}
+    build_to: source
+    auto_apply: dependents
+    runs_before: [code_generator_builder|route_builder]
+
+  route_builder:
+    import: 'package:code_generator_builder/code_generator_builder.dart'
+    builder_factories: ['routeBuilder']
+    build_extensions: {'$lib':["code.route.g.dart"]}
+    build_to: source
+    auto_apply: dependents
